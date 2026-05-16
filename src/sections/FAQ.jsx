@@ -1,0 +1,89 @@
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Plus, Minus } from 'lucide-react';
+
+const FAQ = () => {
+  const faqs = [
+    {
+      q: "What is a chit fund?",
+      a: "A chit fund is a group savings scheme where members contribute an amount every month. Each month, one member receives the total pooled amount through an auction. This continues until every member has received the payout once."
+    },
+    {
+      q: "Is SNS Kuberalakshmi Chits registered?",
+      a: "Yes. We are registered and operating under the Chit Funds Act, 1982, and are fully compliant with all Tamil Nadu state regulations."
+    },
+    {
+      q: "What chit schemes do you offer?",
+      a: "We offer 7 schemes ranging from ₹1 Lakh to ₹30 Lakhs, with durations of 20 or 30 months. Please see our Schemes page for full details or contact us for guidance on choosing the right plan."
+    },
+    {
+      q: "When will I receive my payout?",
+      a: "Payouts happen every month through the auction process. You can bid for the payout when you need the funds, or wait patiently and receive your payment amount at the end of the scheme tenure."
+    },
+    {
+      q: "Is my money safe?",
+      a: "Absolutely. We have been operating since 1993 with a perfect record. We are registered under the Chit Funds Act, 1982, and are also a proud member of the All India Association of Chit Funds and the Tamil Nadu Chit Fund Companies Association. Your savings are fully protected."
+    },
+    {
+      q: "What documents do I need to join?",
+      a: "A valid ID proof (Aadhaar & PAN card), address proof, and a passport-size photograph. Our team will guide you through the entire process."
+    },
+    {
+      q: "Can I get my money if I need it urgently before my turn?",
+      a: "Yes. One of the key advantages of a chit fund is that members can bid in the monthly auction to receive the payout when they need it most — without waiting for their turn."
+    }
+  ];
+
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  return (
+    <section className="py-24 bg-white relative">
+      <div className="container mx-auto px-6 md:px-12 relative z-10">
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <h2 className="text-4xl md:text-5xl font-bold text-brand-maroon mb-6">
+            Frequently Asked <span className="text-gold-500">Questions</span>
+          </h2>
+          <p className="text-lg text-gray-600">
+            Clear answers to help you understand how our chit funds work and how they can benefit you.
+          </p>
+        </div>
+
+        <div className="max-w-4xl mx-auto">
+          {faqs.map((faq, index) => (
+            <div key={index} className="mb-4 border border-gray-200 rounded-xl overflow-hidden hover:border-gold-500/50 transition-colors">
+              <button
+                className="w-full flex justify-between items-center p-6 bg-white text-left focus:outline-none"
+                onClick={() => setActiveIndex(activeIndex === index ? null : index)}
+              >
+                <span className="font-playfair font-bold text-lg text-brand-maroon pr-8">
+                  {faq.q}
+                </span>
+                <span className="text-gold-500 shrink-0">
+                  {activeIndex === index ? <Minus className="w-6 h-6" /> : <Plus className="w-6 h-6" />}
+                </span>
+              </button>
+              
+              <AnimatePresence>
+                {activeIndex === index && (
+                  <motion.div
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: "auto", opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    transition={{ duration: 0.3 }}
+                    className="overflow-hidden bg-neutral-50"
+                  >
+                    <div className="p-6 pt-0 text-gray-600 leading-relaxed border-t border-gray-100">
+                      {faq.a}
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default FAQ;
