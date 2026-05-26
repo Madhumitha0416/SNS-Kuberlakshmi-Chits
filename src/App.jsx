@@ -13,6 +13,10 @@ function ScrollToTop() {
   const { pathname } = useLocation();
 
   useEffect(() => {
+    // Force manual scroll restoration
+    if ('scrollRestoration' in window.history) {
+      window.history.scrollRestoration = 'manual';
+    }
     window.scrollTo(0, 0);
   }, [pathname]);
 
@@ -21,6 +25,12 @@ function ScrollToTop() {
 
 function App() {
   useEffect(() => {
+    // Force manual scroll restoration on reload
+    if ('scrollRestoration' in window.history) {
+      window.history.scrollRestoration = 'manual';
+    }
+    window.scrollTo(0, 0);
+
     const lenis = new Lenis({
       duration: 1.2,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
@@ -32,6 +42,9 @@ function App() {
       touchMultiplier: 2,
       infinite: false,
     });
+
+    // Instantly reset Lenis scroll position to top
+    lenis.scrollTo(0, { immediate: true });
 
     function raf(time) {
       lenis.raf(time);

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronRight, ChevronLeft, Quote } from 'lucide-react';
 
@@ -27,10 +27,47 @@ const Testimonials = () => {
       name: "Mr. Sridar K",
       role: "Salaried Professional",
       location: "Chennai"
+    },
+    {
+      text: "As a business owner, liquid cash flow is crucial. SNS Kuberlakshmi Chits helped me secure timely funds to expand my textile business without any hassle or high-interest loans.",
+      name: "Mrs. Meenakshi S",
+      role: "Business Owner",
+      location: "Madurai"
+    },
+    {
+      text: "I have trusted SNS for my farming equipment purchases. The monthly auctions are highly transparent, and their service is prompt and highly professional.",
+      name: "Mr. Ramesh Kumar R",
+      role: "Agriculturist",
+      location: "Kumbakonam"
+    },
+    {
+      text: "For doctors looking for disciplined savings, SNS Kuberlakshmi Chits is the best choice. Their 30-year legacy of trust and prompt payouts make them a reliable partner.",
+      name: "Dr. Anandakrishnan M",
+      role: "Medical Practitioner",
+      location: "Trichy"
+    },
+    {
+      text: "Starting my financial planning early was important. SNS offered customized schemes that aligned with my savings goals. Excellent digital convenience and supportive customer care.",
+      name: "Mrs. Shalini Priya K",
+      role: "Software Engineer",
+      location: "Coimbatore"
+    },
+    {
+      text: "Being a banker, I evaluate financial institutions carefully. SNS operates strictly within the Chit Funds Act, ensuring unmatched security and clean transparency for senior citizens.",
+      name: "Mr. Venkatesh Prasanna",
+      role: "Retired Bank Manager",
+      location: "Thanjavur"
+    },
+    {
+      text: "We regularly require short-term investments. The high-value schemes at SNS Kuberlakshmi Chits have consistently supported our capital requirements during festive seasons.",
+      name: "Mr. Karthikeyan B",
+      role: "Jewelry Merchant",
+      location: "Coimbatore"
     }
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isHovered, setIsHovered] = useState(false);
 
   const next = () => {
     setCurrentIndex((prev) => (prev + 1) % testimonials.length);
@@ -39,6 +76,14 @@ const Testimonials = () => {
   const prev = () => {
     setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
   };
+
+  useEffect(() => {
+    if (isHovered) return;
+    const interval = setInterval(() => {
+      next();
+    }, 5000); // Automatically transition every 5 seconds
+    return () => clearInterval(interval);
+  }, [isHovered, currentIndex]);
 
   return (
     <section className="py-24 bg-neutral-offwhite relative overflow-hidden">
@@ -50,60 +95,75 @@ const Testimonials = () => {
           <div className="w-24 h-1 bg-gold-500 mx-auto rounded-full"></div>
         </div>
 
-        <div className="max-w-5xl mx-auto relative">
-          <div className="absolute top-1/2 -translate-y-1/2 -left-4 md:-left-12 z-20">
-            <button 
-              onClick={prev}
-              className="w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center text-brand-maroon hover:bg-gold-500 hover:text-white transition-colors"
-            >
-              <ChevronLeft />
-            </button>
-          </div>
-          
-          <div className="absolute top-1/2 -translate-y-1/2 -right-4 md:-right-12 z-20">
-            <button 
-              onClick={next}
-              className="w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center text-brand-maroon hover:bg-gold-500 hover:text-white transition-colors"
-            >
-              <ChevronRight />
-            </button>
-          </div>
-
-          <div className="overflow-hidden px-4 py-8">
+        <div 
+          className="max-w-5xl mx-auto relative px-4 md:px-0"
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
+        >
+          {/* Main Card */}
+          <div className="overflow-hidden py-8">
             <AnimatePresence mode="wait">
               <motion.div
                 key={currentIndex}
-                initial={{ opacity: 0, x: 50 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -50 }}
-                transition={{ duration: 0.5 }}
-                className="bg-white rounded-3xl p-8 md:p-16 shadow-[0_20px_60px_rgba(0,0,0,0.05)] border border-gray-100 relative"
+                initial={{ opacity: 0, y: 20, scale: 0.95 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                exit={{ opacity: 0, y: -20, scale: 0.95 }}
+                transition={{ duration: 0.5, ease: "easeOut" }}
+                className="bg-white rounded-[2.5rem] p-8 md:p-16 shadow-[0_20px_80px_rgba(0,0,0,0.08)] relative z-10 mx-auto max-w-4xl border border-gold-500/10"
               >
-                <Quote className="absolute top-8 left-8 w-16 h-16 text-gold-500/20 rotate-180" />
+                {/* Decorative Corner */}
+                <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-gold-500/20 to-transparent rounded-bl-[4rem] rounded-tr-[2.5rem] -z-10"></div>
                 
-                <p className="text-xl md:text-3xl text-gray-700 leading-relaxed font-playfair italic relative z-10 mb-10 text-center">
-                  "{testimonials[currentIndex].text}"
-                </p>
+                <Quote className="text-gold-500/20 w-16 h-16 md:w-24 md:h-24 absolute top-6 left-6 md:top-10 md:left-10 rotate-180" />
                 
-                <div className="flex flex-col items-center justify-center border-t border-gray-100 pt-8">
-                  <h4 className="text-xl font-bold text-brand-maroon">{testimonials[currentIndex].name}</h4>
-                  <p className="text-gold-500 font-medium">{testimonials[currentIndex].role}</p>
-                  <p className="text-gray-500 text-sm mt-1">{testimonials[currentIndex].location}</p>
+                <div className="relative z-20 flex flex-col items-center">
+                  <p className="text-xl md:text-3xl text-gray-700 leading-relaxed font-playfair italic mb-12 text-center px-2 md:px-16 mt-4 md:mt-8">
+                    "{testimonials[currentIndex].text}"
+                  </p>
+                  
+                  <div className="flex flex-col items-center justify-center">
+                    <div className="w-16 h-16 rounded-full bg-gradient-to-br from-brand-maroon to-red-900 text-gold-500 flex items-center justify-center text-2xl font-bold font-playfair mb-5 shadow-lg border-2 border-gold-500/30">
+                      {testimonials[currentIndex].name.replace('Mrs. ', '').replace('Mr. ', '').replace('Dr. ', '').charAt(0)}
+                    </div>
+                    <h4 className="text-xl md:text-2xl font-bold text-brand-maroon">{testimonials[currentIndex].name}</h4>
+                    <p className="text-gold-500 font-medium tracking-wider text-xs md:text-sm uppercase mt-2">{testimonials[currentIndex].role}</p>
+                    <p className="text-gray-500 text-sm mt-1">{testimonials[currentIndex].location}</p>
+                  </div>
                 </div>
               </motion.div>
             </AnimatePresence>
           </div>
 
-          <div className="flex justify-center mt-8 space-x-2">
-            {testimonials.map((_, idx) => (
-              <button
-                key={idx}
-                onClick={() => setCurrentIndex(idx)}
-                className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                  idx === currentIndex ? 'bg-gold-500 w-8' : 'bg-gray-300 hover:bg-gray-400'
-                }`}
-              />
-            ))}
+          {/* Navigation Controls */}
+          <div className="flex flex-row items-center justify-center mt-6 gap-6 md:gap-12">
+            <button 
+              onClick={prev}
+              className="w-12 h-12 rounded-full bg-white shadow-md border border-gray-100 flex items-center justify-center text-brand-maroon hover:bg-brand-maroon hover:text-gold-500 hover:border-brand-maroon transition-all duration-300 focus:outline-none"
+              aria-label="Previous testimonial"
+            >
+              <ChevronLeft className="w-6 h-6" />
+            </button>
+
+            <div className="flex space-x-3 items-center">
+              {testimonials.map((_, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => setCurrentIndex(idx)}
+                  className={`rounded-full transition-all duration-500 focus:outline-none ${
+                    idx === currentIndex ? 'bg-gold-500 w-10 h-2.5' : 'bg-gray-300 w-2.5 h-2.5 hover:bg-gray-400'
+                  }`}
+                  aria-label={`Go to testimonial ${idx + 1}`}
+                />
+              ))}
+            </div>
+
+            <button 
+              onClick={next}
+              className="w-12 h-12 rounded-full bg-white shadow-md border border-gray-100 flex items-center justify-center text-brand-maroon hover:bg-brand-maroon hover:text-gold-500 hover:border-brand-maroon transition-all duration-300 focus:outline-none"
+              aria-label="Next testimonial"
+            >
+              <ChevronRight className="w-6 h-6" />
+            </button>
           </div>
         </div>
       </div>

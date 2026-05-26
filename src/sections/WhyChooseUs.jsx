@@ -1,8 +1,10 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Award, MapPin, Clock, Wallet, ShieldCheck, HeartHandshake, FileText, BadgeCheck } from 'lucide-react';
 
 const WhyChooseUs = () => {
+  const [activeIndex, setActiveIndex] = useState(0);
+
   const features = [
     {
       icon: <Award className="w-8 h-8" />,
@@ -46,6 +48,14 @@ const WhyChooseUs = () => {
     }
   ];
 
+  // Mobile infinite auto-slider interval
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setActiveIndex((prev) => (prev + 1) % features.length);
+    }, 4000); // Auto advances every 4 seconds
+    return () => clearInterval(timer);
+  }, [features.length]);
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -62,7 +72,7 @@ const WhyChooseUs = () => {
   };
 
   return (
-    <section className="py-24 bg-neutral-offwhite relative">
+    <section className="py-24 bg-neutral-offwhite relative overflow-hidden">
       <div className="absolute top-0 left-0 w-64 h-64 bg-gold-400 rounded-full mix-blend-multiply filter blur-[80px] opacity-20 pointer-events-none"></div>
       
       <div className="container mx-auto px-6 md:px-12 relative z-10">
@@ -75,12 +85,13 @@ const WhyChooseUs = () => {
           </p>
         </div>
 
+        {/* Desktop/Tablet Grid Layout (Completely Unchanged) */}
         <motion.div 
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
+          className="hidden md:grid grid-cols-2 lg:grid-cols-4 gap-8"
         >
           {features.map((feature, idx) => (
             <motion.div 
@@ -98,6 +109,45 @@ const WhyChooseUs = () => {
             </motion.div>
           ))}
         </motion.div>
+
+        {/* Mobile Infinite Auto-Slider Layout (Only visible on mobile screens) */}
+        <div className="block md:hidden relative px-2 pb-14">
+          <div className="relative h-[290px] w-full flex items-center justify-center">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={activeIndex}
+                initial={{ opacity: 0, x: 60 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -60 }}
+                transition={{ duration: 0.4 }}
+                className="absolute w-full bg-white p-8 rounded-2xl shadow-[0_10px_35px_rgba(0,0,0,0.05)] border border-gray-100 min-h-[250px] flex flex-col justify-center"
+              >
+                <div className="w-14 h-14 rounded-xl bg-brand-maroon text-gold-400 flex items-center justify-center mb-6">
+                  {features[activeIndex].icon}
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-3 font-playfair">{features[activeIndex].title}</h3>
+                <p className="text-gray-600 leading-relaxed text-sm">
+                  {features[activeIndex].desc}
+                </p>
+              </motion.div>
+            </AnimatePresence>
+          </div>
+
+          {/* Dots Pagination Indicators */}
+          <div className="flex justify-center space-x-2 absolute bottom-0 left-0 right-0">
+            {features.map((_, idx) => (
+              <button
+                key={idx}
+                onClick={() => setActiveIndex(idx)}
+                className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
+                  activeIndex === idx ? 'bg-gold-500 w-6' : 'bg-gray-300'
+                }`}
+                aria-label={`Go to slide ${idx + 1}`}
+              />
+            ))}
+          </div>
+        </div>
+
       </div>
     </section>
   );

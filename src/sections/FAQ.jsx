@@ -31,6 +31,10 @@ const FAQ = () => {
     {
       q: "Can I get my money if I need it urgently before my turn?",
       a: "Yes. One of the key advantages of a chit fund is that members can bid in the monthly auction to receive the payout when they need it most — without waiting for their turn."
+    },
+    {
+      q: "How can I pay my monthly contributions?",
+      a: "We offer multiple convenient payment options, including UPI, bank transfer, cheque, and in-person cash payments at our branch offices. You can choose the method that works best for you."
     }
   ];
 
@@ -48,38 +52,79 @@ const FAQ = () => {
           </p>
         </div>
 
-        <div className="max-w-4xl mx-auto">
-          {faqs.map((faq, index) => (
-            <div key={index} className="mb-4 border border-gray-200 rounded-xl overflow-hidden hover:border-gold-500/50 transition-colors">
-              <button
-                className="w-full flex justify-between items-center p-6 bg-white text-left focus:outline-none"
-                onClick={() => setActiveIndex(activeIndex === index ? null : index)}
-              >
-                <span className="font-playfair font-bold text-lg text-brand-maroon pr-8">
-                  {faq.q}
-                </span>
-                <span className="text-gold-500 shrink-0">
-                  {activeIndex === index ? <Minus className="w-6 h-6" /> : <Plus className="w-6 h-6" />}
-                </span>
-              </button>
-              
-              <AnimatePresence>
-                {activeIndex === index && (
-                  <motion.div
-                    initial={{ height: 0, opacity: 0 }}
-                    animate={{ height: "auto", opacity: 1 }}
-                    exit={{ height: 0, opacity: 0 }}
-                    transition={{ duration: 0.3 }}
-                    className="overflow-hidden bg-neutral-50"
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 max-w-6xl mx-auto">
+          {/* Left Column */}
+          <div className="flex flex-col gap-4">
+            {faqs.slice(0, 4).map((faq, index) => (
+              <div key={index} className="border border-gray-200 rounded-xl overflow-hidden hover:border-gold-500/50 transition-colors h-fit">
+                <button
+                  className="w-full flex justify-between items-center p-6 bg-white text-left focus:outline-none"
+                  onClick={() => setActiveIndex(activeIndex === index ? null : index)}
+                >
+                  <span className="font-playfair font-bold text-lg text-brand-maroon pr-8">
+                    {faq.q}
+                  </span>
+                  <span className="text-gold-500 shrink-0">
+                    {activeIndex === index ? <Minus className="w-6 h-6" /> : <Plus className="w-6 h-6" />}
+                  </span>
+                </button>
+                
+                <AnimatePresence>
+                  {activeIndex === index && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.3 }}
+                      className="overflow-hidden bg-neutral-50"
+                    >
+                      <div className="p-6 pt-0 text-gray-600 leading-relaxed border-t border-gray-100">
+                        {faq.a}
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+            ))}
+          </div>
+
+          {/* Right Column */}
+          <div className="flex flex-col gap-4">
+            {faqs.slice(4, 8).map((faq, index) => {
+              const globalIndex = index + 4;
+              return (
+                <div key={globalIndex} className="border border-gray-200 rounded-xl overflow-hidden hover:border-gold-500/50 transition-colors h-fit">
+                  <button
+                    className="w-full flex justify-between items-center p-6 bg-white text-left focus:outline-none"
+                    onClick={() => setActiveIndex(activeIndex === globalIndex ? null : globalIndex)}
                   >
-                    <div className="p-6 pt-0 text-gray-600 leading-relaxed border-t border-gray-100">
-                      {faq.a}
-                    </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </div>
-          ))}
+                    <span className="font-playfair font-bold text-lg text-brand-maroon pr-8">
+                      {faq.q}
+                    </span>
+                    <span className="text-gold-500 shrink-0">
+                      {activeIndex === globalIndex ? <Minus className="w-6 h-6" /> : <Plus className="w-6 h-6" />}
+                    </span>
+                  </button>
+                  
+                  <AnimatePresence>
+                    {activeIndex === globalIndex && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.3 }}
+                        className="overflow-hidden bg-neutral-50"
+                      >
+                        <div className="p-6 pt-0 text-gray-600 leading-relaxed border-t border-gray-100">
+                          {faq.a}
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+              );
+            })}
+          </div>
         </div>
       </div>
     </section>

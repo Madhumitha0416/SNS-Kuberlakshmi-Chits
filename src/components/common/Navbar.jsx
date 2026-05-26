@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, Phone, MapPin } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import logoImg from '../../assets/images/logo.png';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -39,7 +40,7 @@ const Navbar = () => {
           </span>
         </div>
         <div className="text-gold-400 font-medium">
-          Registered under Chit Funds Act, 1982
+         Registered Under Companies Act & Chit Funds Act
         </div>
       </div>
 
@@ -49,8 +50,18 @@ const Navbar = () => {
         }`}
       >
         <div className="container mx-auto px-6 md:px-12 flex justify-between items-center">
-          <Link to="/" className="flex items-center space-x-2 group">
-            <div className={`text-2xl md:text-3xl font-playfair font-bold transition-colors ${isScrolled || location.pathname !== '/' ? 'text-brand-maroon' : 'text-white'}`}>
+          <Link to="/" className="flex items-center space-x-2 sm:space-x-3 group">
+            <div className="relative shrink-0 flex items-center justify-center">
+              {/* Luxury ambient gold aura ring */}
+              <div className="absolute inset-0 rounded-full bg-gold-500/25 blur-md group-hover:blur-lg transition-all duration-300 opacity-80"></div>
+              {/* Premium padded outer gold medallion container */}
+              <div className="relative z-10 w-9 h-9 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-full bg-[#3d0208] border-2 border-gold-500/50 p-[3px] flex items-center justify-center shadow-lg group-hover:border-gold-400 group-hover:scale-105 transition-all duration-300 shrink-0">
+                <img src={logoImg} alt="SNS Kuberalakshmi" className="w-full h-full object-contain rounded-full" />
+              </div>
+            </div>
+            <div className={`text-sm sm:text-2xl md:text-3xl font-playfair font-bold tracking-wide transition-colors leading-none whitespace-nowrap ${
+              isScrolled || location.pathname !== '/' ? 'text-brand-maroon' : 'text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]'
+            }`}>
               SNS Kuberalakshmi <span className="text-gold-500">Chits</span>
             </div>
           </Link>
@@ -98,8 +109,16 @@ const Navbar = () => {
             className="fixed inset-0 z-50 bg-brand-maroon text-white flex flex-col p-6"
           >
             <div className="flex justify-between items-center mb-12">
-              <div className="text-2xl font-playfair font-bold text-gold-500">
-                SNS Kuberalakshmi
+              <div className="flex items-center space-x-3">
+                <div className="relative shrink-0 flex items-center justify-center">
+                  <div className="absolute inset-0 rounded-full bg-gold-500/35 blur-md opacity-80"></div>
+                  <div className="relative z-10 w-12 h-12 rounded-full bg-[#3d0208] border-2 border-gold-500/50 p-[3px] flex items-center justify-center shadow-lg shrink-0">
+                    <img src={logoImg} alt="SNS Kuberalakshmi" className="w-full h-full object-contain rounded-full" />
+                  </div>
+                </div>
+                <div className="text-xl font-playfair font-bold text-gold-500 whitespace-nowrap">
+                  SNS Kuberalakshmi
+                </div>
               </div>
               <button onClick={() => setIsMobileMenuOpen(false)} className="p-2 text-white">
                 <X size={28} />

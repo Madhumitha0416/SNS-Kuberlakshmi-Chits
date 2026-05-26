@@ -2,9 +2,26 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="" />
+    <link rel="icon" type="image/svg+xml" href="./src/assets/images/logo.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SNS Kuberlakshmi Chits</title>
+    <script>
+      // Force manual scroll restoration at the browser level immediately
+      if ('scrollRestoration' in history) {
+        history.scrollRestoration = 'manual';
+      }
+      window.scrollTo(0, 0);
+
+      // Force scroll to top when page is unloading
+      window.addEventListener('beforeunload', function () {
+        window.scrollTo(0, 0);
+      });
+
+      // Force scroll to top when the window loads
+      window.addEventListener('load', function () {
+        window.scrollTo(0, 0);
+      });
+    </script>
   </head>
   <body>
     <div id="root"></div>
