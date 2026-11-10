@@ -1,86 +1,72 @@
 import React from 'react';
 import AnimatedPage from '../components/common/AnimatedPage';
 import { motion } from 'framer-motion';
-import heroBg from '../assets/images/savings_illustration_1778846637604.png';
-import { PiggyBank, HandCoins, FileCheck, Search, SlidersHorizontal, ShieldAlert, TrendingUp, Landmark, ShieldCheck } from 'lucide-react';
-
-// Import generated local images for the services page
-import familySavingsImg from '../assets/images/family_savings.png';
-import businessCapitalImg from '../assets/images/business_capital.png';
-import wealthGrowthImg from '../assets/images/wealth_growth.png';
-import ruralProsperityImg from '../assets/images/rural_prosperity.png';
-import paperworkImg from '../assets/images/paperwork.png';
-import securePayoutsImg from '../assets/images/secure_payouts.png';
+import heroBg from '../assets/images/ph.png';
+import { PiggyBank, HandCoins, FileCheck, Search, SlidersHorizontal, ShieldAlert, TrendingUp, Landmark, ShieldCheck, Users, Briefcase, Sprout } from 'lucide-react';
 
 const Features = () => {
-  // 6 Core Benefits with premium local images & descriptions
+  // 6 Core Benefits with premium icons & animated cards
   const benefits = [
     {
       icon: <PiggyBank className="w-6 h-6" />,
       title: "Disciplined Savings",
-      desc: "Save monthly without the urge to spend prematurely, building a stable backup asset.",
-      img: familySavingsImg
+      desc: "Save monthly without the urge to spend prematurely, building a stable backup asset."
     },
     {
       icon: <HandCoins className="w-6 h-6" />,
       title: "Access Funds Quickly",
-      desc: "Bid in monthly auctions and access large lump sums exactly when you need them.",
-      img: businessCapitalImg
+      desc: "Bid in monthly auctions and access large lump sums exactly when you need them."
     },
     {
       icon: <FileCheck className="w-6 h-6" />,
       title: "Simple Paperwork",
-      desc: "Hassle-free, rapid registration with zero complex bank processes or collateral requirements.",
-      img: paperworkImg
+      desc: "Hassle-free, rapid registration with zero complex bank processes or collateral requirements."
     },
     {
       icon: <Search className="w-6 h-6" />,
       title: "Fully Transparent",
-      desc: "All monthly auctions and payout dividends are clearly documented and shared with members.",
-      img: wealthGrowthImg
+      desc: "All monthly auctions and payout dividends are clearly documented and shared with members."
     },
     {
       icon: <SlidersHorizontal className="w-6 h-6" />,
       title: "Flexible Options",
-      desc: "Multiple subscription scales ranging from ₹1 Lakh to ₹30 Lakhs tailored to your capacity.",
-      img: ruralProsperityImg
+      desc: "Multiple subscription scales ranging from ₹1 Lakh to ₹30 Lakhs tailored to your capacity."
     },
     {
       icon: <ShieldAlert className="w-6 h-6" />,
       title: "100% Secure Payouts",
-      desc: "Governed under the Chit Funds Act, 1982, ensuring fully backed legal protection for your funds.",
-      img: securePayoutsImg
+      desc: "Governed under the Chit Funds Act, 1982, ensuring fully backed legal protection for your funds."
     }
   ];
 
-  // Image-Based Services by Segment
+  // Services by Segment
   const segmentServices = [
     {
       title: "For Homemakers & Families",
       subtitle: "Secure Family Gold & Education",
       desc: "Build a reliable reserve fund for weddings, jewelry, and children's higher studies with zero-stress monthly plans.",
-      img: familySavingsImg,
+      icon: <Users className="w-8 h-8 text-gold-500" />,
       tag: "Family Trust"
     },
     {
       title: "For Traders & Retailers",
       subtitle: "No-Collateral Working Capital",
       desc: "Access immediate bidding lump sums to stock inventory, expand shop floors, or capture seasonal trade deals.",
-      img: businessCapitalImg,
+      icon: <Briefcase className="w-8 h-8 text-gold-500" />,
       tag: "Business Capital"
     },
     {
       title: "For Salaried Professionals",
       subtitle: "Disciplined Long-term Wealth",
       desc: "Automate your savings to systematically create property assets or build robust contingency funds for the future.",
-      img: wealthGrowthImg,
+      icon: <TrendingUp className="w-8 h-8 text-gold-500" />,
       tag: "Wealth Growth"
     },
     {
       title: "For Farmers & Agriculturists",
       subtitle: "Harvest-Cycle Friendly Plans",
       desc: "Tailored chit services that match harvest cycles, helping buy modern equipment or fertile agricultural land.",
-      img: ruralProsperityImg,
+      icon: <Sprout className="w-8 h-8 text-gold-500" />,
       tag: "Rural Prosperity"
     }
   ];
@@ -93,7 +79,7 @@ const Features = () => {
           <div className="absolute inset-0 bg-black/60 z-10"></div>
           <img src={heroBg} alt="Savings Illustration" className="w-full h-full object-cover" />
         </div>
-        <div className="absolute inset-0 z-10 bg-gradient-to-t from-neutral-offwhite via-transparent to-transparent"></div>
+        {/* <div className="absolute inset-0 z-10 bg-gradient-to-t from-neutral-offwhite via-transparent to-transparent"></div> */}
         <div className="container mx-auto px-6 relative z-20 pt-20 text-center">
           <motion.h1 
             initial={{ opacity: 0, y: 20 }}
@@ -157,8 +143,8 @@ const Features = () => {
                     <Landmark className="w-5 h-5" />
                   </div>
                   <div>
-                    <h4 className="font-bold text-brand-maroon text-sm uppercase tracking-wide">No Collateral</h4>
-                    <p className="text-xs text-gray-500 mt-1">Access immediate funds without heavy property assets.</p>
+                    <h4 className="font-bold text-brand-maroon text-sm uppercase tracking-wide">Minimal Documentation</h4>
+                    <p className="text-xs text-gray-500 mt-1">Join with just basic ID proof and address verification — no heavy bank-level requirements.</p>
                   </div>
                 </div>
 
@@ -175,7 +161,7 @@ const Features = () => {
             </motion.div>
           </div>
 
-          {/* Part 2: Image-Based Services UI Design */}
+          {/* Part 2: Premium Animated Segment Services Grid */}
           <div className="space-y-16 mb-24">
             <div className="text-center max-w-2xl mx-auto space-y-4">
               <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gold-500/10 border border-gold-500/20 text-gold-500 text-xs font-semibold tracking-wider uppercase">
@@ -197,30 +183,31 @@ const Features = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: idx * 0.1 }}
-                  className="group relative h-[380px] sm:h-[420px] rounded-[2rem] overflow-hidden shadow-2xl border border-gold-500/10 cursor-pointer"
+                  className="group relative h-[300px] sm:h-[340px] rounded-[2rem] overflow-hidden shadow-xl border border-gold-500/15 cursor-pointer bg-gradient-to-br from-[#2a0309] via-[#1d0104] to-neutral-950 p-8 sm:p-10 flex flex-col justify-between items-start transition-all duration-300 hover:shadow-2xl hover:-translate-y-1"
                 >
-                  {/* Background Image with Hover Scale */}
-                  <div className="absolute inset-0 z-0 transition-transform duration-700 group-hover:scale-105">
-                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-black/10 z-10"></div>
-                    <img 
-                      src={service.img} 
-                      alt={service.title} 
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
+                  {/* Glowing background blob on hover */}
+                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(212,175,55,0.05),transparent_60%)] z-0"></div>
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-[radial-gradient(circle_at_bottom_left,rgba(163,22,33,0.1),transparent_50%)] z-0"></div>
 
-                  {/* Content Overlay */}
-                  <div className="absolute inset-0 z-20 p-8 sm:p-10 flex flex-col justify-end items-start text-left space-y-3">
-                    <span className="px-3 py-1 rounded-full bg-gold-500 text-brand-maroon text-[10px] font-bold uppercase tracking-wider">
+                  <div className="flex justify-between items-start w-full relative z-10">
+                    <div className="w-16 h-16 bg-white/5 border border-white/10 rounded-2xl flex items-center justify-center text-gold-500 shadow-lg group-hover:scale-110 group-hover:border-gold-500/30 group-hover:bg-gold-500/10 transition-all duration-300">
+                      {service.icon}
+                    </div>
+                    <span className="px-3.5 py-1.5 rounded-full bg-gold-500/10 border border-gold-500/30 text-gold-400 text-[10px] font-bold uppercase tracking-wider">
                       {service.tag}
                     </span>
-                    <h4 className="text-2xl sm:text-3xl font-bold text-white font-playfair group-hover:text-gold-400 transition-colors">
-                      {service.title}
-                    </h4>
-                    <h5 className="text-sm font-semibold text-gold-500 uppercase tracking-widest">
-                      {service.subtitle}
-                    </h5>
-                    <p className="text-gray-300 text-sm sm:text-base font-light leading-relaxed max-w-md opacity-90 group-hover:opacity-100 transition-opacity">
+                  </div>
+
+                  <div className="space-y-2.5 relative z-10 w-full">
+                    <div className="space-y-1">
+                      <h4 className="text-2xl sm:text-3xl font-bold text-white font-playfair group-hover:text-gold-400 transition-colors">
+                        {service.title}
+                      </h4>
+                      <h5 className="text-xs sm:text-sm font-semibold text-gold-500/80 uppercase tracking-widest leading-none">
+                        {service.subtitle}
+                      </h5>
+                    </div>
+                    <p className="text-gray-300 text-sm sm:text-base font-light leading-relaxed max-w-lg opacity-90 group-hover:opacity-100 transition-opacity">
                       {service.desc}
                     </p>
                   </div>
@@ -229,7 +216,7 @@ const Features = () => {
             </div>
           </div>
 
-          {/* Part 3: Responsive Image-Based Benefits Grid (The SNS Advantage) */}
+          {/* Part 3: Premium Animated Benefits Grid (The SNS Advantage) */}
           <div className="space-y-12">
             <div className="text-center max-w-2xl mx-auto space-y-4">
               <h3 className="text-2xl sm:text-3xl font-bold text-brand-maroon font-playfair">
@@ -248,34 +235,23 @@ const Features = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: idx * 0.1 }}
-                  className="group relative h-[320px] rounded-[2rem] overflow-hidden shadow-[0_15px_40px_rgba(0,0,0,0.15)] border border-white/10 cursor-pointer"
+                  className="group relative h-[260px] rounded-[2rem] overflow-hidden shadow-md border border-gold-500/10 cursor-pointer bg-neutral-900 p-8 flex flex-col justify-between items-start transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
                 >
-                  {/* Background Image with Hover Zoom */}
-                  <div className="absolute inset-0 z-0 transition-transform duration-700 group-hover:scale-110">
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/70 to-black/30 z-10"></div>
-                    <img 
-                      src={benefit.img} 
-                      alt={benefit.title} 
-                      className="w-full h-full object-cover"
-                    />
+                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(212,175,55,0.03),transparent_50%)] z-0"></div>
+
+                  {/* Top Icon Badge container */}
+                  <div className="w-12 h-12 bg-white/5 border border-white/10 rounded-xl flex items-center justify-center text-gold-500 shadow-lg group-hover:bg-gold-500 group-hover:text-brand-maroon group-hover:scale-110 transition-all duration-300 relative z-10">
+                    {benefit.icon}
                   </div>
 
-                  {/* Card Contents overlay */}
-                  <div className="absolute inset-0 z-20 p-8 flex flex-col justify-between items-start text-left">
-                    {/* Top Icon Badge container */}
-                    <div className="w-12 h-12 bg-white/10 backdrop-blur-md border border-white/20 rounded-xl flex items-center justify-center text-gold-500 shadow-lg group-hover:bg-gold-500 group-hover:text-brand-maroon transition-all duration-300">
-                      {benefit.icon}
-                    </div>
-
-                    {/* Bottom Content text panel */}
-                    <div className="space-y-2">
-                      <h3 className="text-xl font-bold text-white font-playfair group-hover:text-gold-400 transition-colors">
-                        {benefit.title}
-                      </h3>
-                      <p className="text-gray-300 text-sm leading-relaxed font-light opacity-90 group-hover:opacity-100 transition-opacity">
-                        {benefit.desc}
-                      </p>
-                    </div>
+                  {/* Bottom Content text panel */}
+                  <div className="space-y-2 relative z-10">
+                    <h3 className="text-xl font-bold text-white font-playfair group-hover:text-gold-400 transition-colors">
+                      {benefit.title}
+                    </h3>
+                    <p className="text-gray-300 text-sm leading-relaxed font-light opacity-90 group-hover:opacity-100 transition-opacity">
+                      {benefit.desc}
+                    </p>
                   </div>
                 </motion.div>
               ))}

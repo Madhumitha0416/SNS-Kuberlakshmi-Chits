@@ -63,7 +63,7 @@ const CTA = () => {
               <p className="text-[10px] md:text-xs text-gray-400 uppercase tracking-widest font-semibold mt-1">Chit Funds Act</p>
             </div>
             <div className="col-span-2 md:col-span-1">
-              <p className="text-2xl md:text-3xl font-bold text-gold-500 font-playfair">25,000+</p>
+              <p className="text-2xl md:text-3xl font-bold text-gold-500 font-playfair">10,000+</p>
               <p className="text-[10px] md:text-xs text-gray-400 uppercase tracking-widest font-semibold mt-1">Happy Families</p>
             </div>
           </div>

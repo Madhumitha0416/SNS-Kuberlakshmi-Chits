@@ -2,13 +2,50 @@ import React, { useState } from "react";
 import AnimatedPage from "../components/common/AnimatedPage";
 import { motion } from "framer-motion";
 import { Phone, Mail, MapPin, Clock, Send, MessageCircle } from "lucide-react";
+import heroBg from '../assets/images/ph.png';
+
+const FacebookIcon = ({ size = 20, className }) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width={size}
+    height={size}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className={className}
+  >
+    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+  </svg>
+);
+
+const InstagramIcon = ({ size = 20, className }) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width={size}
+    height={size}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className={className}
+  >
+    <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
+    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+    <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
+  </svg>
+);
 
 const Contact = () => {
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
     city: "",
-    scheme: "Scheme 1 (₹1 Lakh)",
+    scheme: "Chit Plan 1 (₹1 Lakh)",
   });
 
   const handleChange = (e) => {
@@ -18,43 +55,67 @@ const Contact = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle form submission logic here
-    console.log("Form submitted", formData);
-    alert("Thank you for your interest. Our team will contact you shortly.");
+
+    // Construct the WhatsApp message details
+    const message = `Hello SNS Kuberlakshmi Chits,
+
+I would like to make an enquiry:
+*Name:* ${formData.name}
+*Phone Number:* ${formData.phone}
+*City/Location:* ${formData.city}
+*Scheme of Interest:* ${formData.scheme}`;
+
+    const whatsappNumber = "919488004010";
+    const encodedMessage = encodeURIComponent(message);
+    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+
+    // Open WhatsApp in a new tab
+    window.open(whatsappUrl, "_blank", "noopener,noreferrer");
+
+    // Reset the form
     setFormData({
       name: "",
       phone: "",
       city: "",
-      scheme: "Scheme 1 (₹1 Lakh)",
+      scheme: "Chit Plan 1 (₹1 Lakh)",
     });
   };
 
   return (
     <AnimatedPage>
       {/* Page Header */}
-      <section className="relative h-[40vh] min-h-[300px] flex items-center justify-center overflow-hidden bg-brand-maroon -mt-20">
-        <div className="absolute inset-0 z-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
-        <div className="absolute inset-0 z-10 bg-gradient-to-t from-neutral-offwhite via-transparent to-transparent"></div>
-        <div className="container mx-auto px-6 relative z-20 pt-20 text-center">
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-5xl md:text-7xl font-bold text-white mb-6 font-playfair"
-          >
-            Contact <span className="text-gold-500">Us</span>
-          </motion.h1>
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="w-24 h-1 bg-gold-500 mx-auto rounded-full"
-          ></motion.div>
-        </div>
-      </section>
+
+      <section className="relative h-[60vh] min-h-[400px] flex items-center justify-center overflow-hidden bg-brand-maroon -mt-20">
+              <div className="absolute inset-0 z-0">
+                <div className="absolute inset-0 bg-black/60 z-10"></div>
+                <img src={heroBg} alt="Corporate Office" className="w-full h-full object-cover" />
+              </div>
+              {/* <div className="absolute inset-0 z-10 bg-gradient-to-t from-neutral-offwhite via-transparent to-transparent"></div> */}
+              <div className="container mx-auto px-6 relative z-20 pt-20 text-center">
+                <motion.h1 
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8 }}
+                  className="text-5xl md:text-7xl font-bold text-white mb-6 font-playfair"
+                >
+                  Contact <span className="text-gold-500">Us</span>
+                </motion.h1>
+                <motion.div 
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: 0.2 }}
+                  className="w-24 h-1 bg-gold-500 mx-auto rounded-full"
+                ></motion.div>
+              </div>
+            </section>
+
+
+     
 
       <section className="py-20 bg-neutral-offwhite">
+
         <div className="container mx-auto px-6 md:px-12">
+
           <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-5 gap-12">
             {/* Contact Information */}
             <div className="lg:col-span-2 space-y-8 -mt-32 relative z-20">
@@ -124,6 +185,18 @@ const Contact = () => {
                       </p>
                     </div>
                   </div>
+
+                  <div className="border-t border-white/10 pt-8 flex flex-col space-y-4">
+                    <h4 className="font-bold text-lg text-gold-500">Follow Us</h4>
+                    <div className="flex items-center space-x-4">
+                      <a href="https://www.facebook.com/share/18eqnw4V9m/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" className="w-11 h-11 rounded-full bg-white/10 hover:bg-gold-500 hover:text-brand-maroon border border-white/20 hover:border-gold-500 flex items-center justify-center text-white transition-all duration-300 shadow-md hover:scale-105">
+                        <FacebookIcon size={20} />
+                      </a>
+                      <a href="https://www.instagram.com/snskuberalakshmichitspvtltd" target="_blank" rel="noopener noreferrer" className="w-11 h-11 rounded-full bg-white/10 hover:bg-gold-500 hover:text-brand-maroon border border-white/20 hover:border-gold-500 flex items-center justify-center text-white transition-all duration-300 shadow-md hover:scale-105">
+                        <InstagramIcon size={20} />
+                      </a>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -133,6 +206,7 @@ const Contact = () => {
               <h3 className="text-3xl font-playfair font-bold text-brand-maroon mb-2">
                 Send an Enquiry
               </h3>
+              
               <p className="text-gray-500 mb-8">
                 Fill out the form below and we will get back to you shortly.
               </p>
@@ -194,26 +268,26 @@ const Contact = () => {
                     onChange={handleChange}
                     className="w-full bg-neutral-50 border border-gray-200 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-gold-500 focus:border-transparent transition-all text-gray-700"
                   >
-                    <option value="Scheme 1 (₹1 Lakh)">
-                      Scheme 1 (₹1,00,000)
+                    <option value="Chit Plan 1 (₹1 Lakh)">
+                      Chit Plan 1 (₹1,00,000)
                     </option>
-                    <option value="Scheme 2 (₹2 Lakhs)">
-                      Scheme 2 (₹2,00,000)
+                    <option value="Chit Plan 2 (₹2 Lakhs)">
+                      Chit Plan 2 (₹2,00,000)
                     </option>
-                    <option value="Scheme 3 (₹5 Lakhs)">
-                      Scheme 3 (₹5,00,000)
+                    <option value="Chit Plan 3 (₹5 Lakhs)">
+                      Chit Plan 3 (₹5,00,000)
                     </option>
-                    <option value="Scheme 4 (₹10 Lakhs)">
-                      Scheme 4 (₹10,00,000)
+                    <option value="Chit Plan 4 (₹10 Lakhs)">
+                      Chit Plan 4 (₹10,00,000)
                     </option>
-                    <option value="Scheme 5 (₹15 Lakhs)">
-                      Scheme 5 (₹15,00,000)
+                    <option value="Chit Plan 5 (₹15 Lakhs)">
+                      Chit Plan 5 (₹15,00,000)
                     </option>
-                    <option value="Scheme 6 (₹20 Lakhs)">
-                      Scheme 6 (₹20,00,000)
+                    <option value="Chit Plan 6 (₹20 Lakhs)">
+                      Chit Plan 6 (₹20,00,000)
                     </option>
-                    <option value="Scheme 7 (₹30 Lakhs)">
-                      Scheme 7 (₹30,00,000)
+                    <option value="Chit Plan 7 (₹30 Lakhs)">
+                      Chit Plan 7 (₹30,00,000)
                     </option>
                     <option value="Not Sure Yet">
                       Not Sure Yet - Need Guidance
@@ -247,8 +321,11 @@ const Contact = () => {
               ></iframe>
             </div>
           </div>
+
         </div>
+
       </section>
+
     </AnimatedPage>
   );
 };

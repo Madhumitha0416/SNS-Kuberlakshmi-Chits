@@ -1,9 +1,9 @@
 import React from 'react';
 import AnimatedPage from '../components/common/AnimatedPage';
 import { motion } from 'framer-motion';
-import heroBg from '../assets/images/corporate_office_1778846615717.png';
-import founderImg from '../assets/images/founder_placeholder_1778846652736.png';
-import ceoImg from '../assets/images/ceo_placeholder_1778846667428.png';
+import heroBg from '../assets/images/ph.png';
+import founderImg from '../assets/images/p1.png';
+import ceoImg from '../assets/images/p2.png';
 import { Target, Flag, Heart } from 'lucide-react';
 
 const About = () => {
@@ -15,7 +15,7 @@ const About = () => {
           <div className="absolute inset-0 bg-black/60 z-10"></div>
           <img src={heroBg} alt="Corporate Office" className="w-full h-full object-cover" />
         </div>
-        <div className="absolute inset-0 z-10 bg-gradient-to-t from-neutral-offwhite via-transparent to-transparent"></div>
+        {/* <div className="absolute inset-0 z-10 bg-gradient-to-t from-neutral-offwhite via-transparent to-transparent"></div> */}
         <div className="container mx-auto px-6 relative z-20 pt-20 text-center">
           <motion.h1 
             initial={{ opacity: 0, y: 20 }}
@@ -96,7 +96,7 @@ const About = () => {
                       </div>
                       <div>
                         <h4 className="text-gold-400 font-semibold text-sm uppercase tracking-wider">100% Legal & Regulated</h4>
-                        <p className="text-xs text-gray-300 mt-1">Fully registered and compliant with the Government Chit Funds Act, 1982.</p>
+                        <p className="text-xs text-gray-300 mt-1">Fully Registered and complaint with the as per Provision of Chit Fund Act.</p>
                       </div>
                     </div>
 
@@ -210,7 +210,7 @@ const About = () => {
                   { title: "Personal Service", desc: "We know your name, not just your account number." },
                   { title: "Transparency", desc: "Every transaction is clear, documented, and fully explained." },
                   { title: "Inclusivity", desc: "Schemes for everyone — homemakers, farmers, traders, and salaried employees." },
-                  { title: "Compliance", desc: "Fully registered and operating under the Chit Funds Act, 1982." }
+                  { title: "Compliance", desc: "Registered and operating under provisions of Chit Fund Act" }
                 ].map((val, idx) => (
                   <div key={idx} className="group relative space-y-1.5 p-4 rounded-2xl hover:bg-white/[0.02] border border-transparent hover:border-white/5 transition-all duration-300">
                     <div className="flex items-center space-x-2">

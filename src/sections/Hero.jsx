@@ -2,7 +2,8 @@ import React, { useEffect, useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { ArrowRight, ShieldCheck, Users, Briefcase, Award } from 'lucide-react';
-import heroBg from '../assets/images/hero_bg_1778846580118.png';
+import heroBg from '../assets/images/growing_wealth_bg.png';
+import aiacfLogo from '../assets/images/AIACF.png';
 
 const Hero = () => {
   const containerRef = useRef(null);
@@ -25,15 +26,18 @@ const Hero = () => {
 
       <div className="container mx-auto px-4 sm:px-6 relative z-20 pt-32 sm:pt-28 pb-12 sm:pb-20">
         <div className="max-w-4xl mx-auto text-center">
-          <motion.div
+          {/* <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-md px-3 py-1.5 sm:px-4 sm:py-2 rounded-full border border-gold-500/30 mb-6 sm:mb-8"
+            className="inline-flex flex-col items-center bg-white/10 backdrop-blur-md px-5 py-2.5 sm:px-6 sm:py-3 rounded-2xl border border-gold-500/30 mb-6 sm:mb-8"
           >
-            <ShieldCheck className="text-gold-500 w-4 h-4 sm:w-5 sm:h-5" />
-            <span className="text-gold-400 text-xs sm:text-sm font-medium tracking-wide uppercase">Govt. Registered Chit Fund</span>
-          </motion.div>
+            <div className="w-12 h-12 sm:w-14 sm:h-14 bg-white rounded-full p-0.5 border border-gold-500/40 shadow-[0_0_15px_rgba(212,175,55,0.3)] flex items-center justify-center shrink-0 overflow-hidden">
+              <img src={aiacfLogo} alt="AIACF Logo" className="w-full h-full object-cover" />
+            </div>
+            <div className="w-16 h-[1px] bg-gold-500/20 my-2"></div>
+            <span className="text-gray-300 text-[10px] sm:text-xs font-semibold tracking-wider uppercase">Registered under Chitfund Act</span>
+          </motion.div> */}
 
           <motion.h1
             initial={{ opacity: 0, y: 30 }}

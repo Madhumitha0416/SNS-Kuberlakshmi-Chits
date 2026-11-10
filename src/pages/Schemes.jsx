@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import AnimatedPage from '../components/common/AnimatedPage';
 import { motion } from 'framer-motion';
-import heroBg from '../assets/images/gold_abstract_1778846598861.png';
+import heroBg from '../assets/images/ph.png';
 import { Calculator, CheckCircle2 } from 'lucide-react';
 
 const Schemes = () => {
@@ -24,10 +24,10 @@ const Schemes = () => {
       {/* Page Header */}
       <section className="relative h-[50vh] min-h-[350px] flex items-center justify-center overflow-hidden bg-brand-maroon -mt-20">
         <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-brand-green/80 mix-blend-multiply z-10"></div>
+          <div className="absolute inset-0 bg-black/60 mix-blend-multiply z-10"></div>
           <img src={heroBg} alt="Gold Abstract" className="w-full h-full object-cover" />
         </div>
-        <div className="absolute inset-0 z-10 bg-gradient-to-t from-neutral-offwhite via-transparent to-transparent"></div>
+        {/* <div className="absolute inset-0 z-10 bg-gradient-to-t from-neutral-offwhite via-transparent to-transparent"></div> */}
         <div className="container mx-auto px-6 relative z-20 pt-20 text-center">
           <motion.h1 
             initial={{ opacity: 0, y: 20 }}

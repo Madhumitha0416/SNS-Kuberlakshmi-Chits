@@ -3,6 +3,42 @@ import { Link } from 'react-router-dom';
 import { Phone, Mail, MapPin, ArrowRight } from 'lucide-react';
 import logoImg from '../../assets/images/logo.png';
 
+const FacebookIcon = ({ size = 20, className }) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width={size}
+    height={size}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className={className}
+  >
+    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+  </svg>
+);
+
+const InstagramIcon = ({ size = 20, className }) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width={size}
+    height={size}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className={className}
+  >
+    <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
+    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+    <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
+  </svg>
+);
+
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
@@ -11,7 +47,7 @@ const Footer = () => {
       <div className="absolute top-0 right-0 w-96 h-96 bg-brand-maroon rounded-full mix-blend-multiply filter blur-[100px] opacity-20 animate-blob pointer-events-none"></div>
       <div className="container mx-auto px-6 md:px-12 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
-          <div className="space-y-6">
+          <div className="space-y-6 flex flex-col items-start">
             <div className="flex items-center space-x-3 group">
               <div className="relative shrink-0 flex items-center justify-center">
                 <div className="absolute inset-0 rounded-full bg-gold-500/10 blur-lg group-hover:bg-gold-500/25 transition-all duration-300 opacity-60"></div>
@@ -22,11 +58,21 @@ const Footer = () => {
                 <span className="text-white text-base sm:text-lg font-normal">Chits (P) Ltd.</span>
               </h3>
             </div>
-            <p className="text-gray-400 leading-relaxed text-sm">
-              One of Mayiladuthurai's most trusted chit fund companies, proudly serving the community since 1993. Building wealth and trust for over 33 years.
+            <p className="text-gray-400 leading-relaxed text-sm text-left">
+             
+             “One of Mayiladuthurai's most trusted chit fund companies, proudly serving the community since 1993. Building wealth and trust for over 3 Decades. conducting Chits as per the provisions of the Chit Funds Act, 1982.”
+
             </p>
-            <div className="inline-block bg-white/10 px-4 py-2 rounded text-xs text-gold-400 border border-gold-500/30">
-              Registered under Chit Funds Act, 1982
+            <div className="text-left bg-white/10 px-4 py-2 rounded text-xs text-gold-400 border border-gold-500/30">
+             Incorporated under the Companies Act, 1956 & Operating under the Central Chit Funds Act, 1982
+            </div>
+            <div className="flex items-center space-x-3.5 pt-2">
+              <a href="https://www.facebook.com/share/18eqnw4V9m/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/5 border border-white/10 hover:bg-gold-500 hover:text-brand-maroon hover:border-gold-500 flex items-center justify-center text-gray-400 hover:scale-105 transition-all duration-300 shadow-md">
+                <FacebookIcon size={20} />
+              </a>
+              <a href="https://www.instagram.com/snskuberalakshmichitspvtltd" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/5 border border-white/10 hover:bg-gold-500 hover:text-brand-maroon hover:border-gold-500 flex items-center justify-center text-gray-400 hover:scale-105 transition-all duration-300 shadow-md">
+                <InstagramIcon size={20} />
+              </a>
             </div>
           </div>
 
@@ -55,7 +101,7 @@ const Footer = () => {
             <ul className="space-y-4">
               <li className="flex items-start space-x-3 text-gray-400">
                 <MapPin size={20} className="text-gold-500 shrink-0 mt-1" />
-                <span className="text-sm">12C/8, Sri Saratha Mahal,<br />No.2 Road, Koranad,<br />Mayiladuthurai – 609 001</span>
+                <span className="text-sm"> 12C/8, Sri Saratha Mahal,<br />No.2 Road, Koranad,<br />Mayiladuthurai – 609 001 </span>
               </li>
               <li className="flex items-center space-x-3 text-gray-400">
                 <Phone size={20} className="text-gold-500 shrink-0" />
@@ -85,6 +131,10 @@ const Footer = () => {
               ></iframe>
             </div>
           </div>
+        </div>
+
+        <div className="mt-8 text-center text-gold-400 font-semibold text-xs sm:text-sm tracking-wide bg-white/5 py-3.5 px-6 rounded-lg border border-gold-500/20 max-w-2xl mx-auto shadow-md">
+          “We accept subscriptions only. We do not accept deposits.”
         </div>
 
         <div className="border-t border-white/10 pt-8 mt-8 flex flex-col md:flex-row justify-between items-center text-sm text-gray-200">

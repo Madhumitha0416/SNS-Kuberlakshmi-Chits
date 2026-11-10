@@ -6,7 +6,7 @@ const FAQ = () => {
   const faqs = [
     {
       q: "What is a chit fund?",
-      a: "A chit fund is a group savings scheme where members contribute an amount every month. Each month, one member receives the total pooled amount through an auction. This continues until every member has received the payout once."
+      a: "Chit Fund is a unique and indigenous savings-cum-borrowing financial instrument that existed long before banking came to India. It continues to be the preferred mode of savings for millions of middle-class families across South India. Also known as Chit, Chitty, Kuri, or Fraternity Fund — and recognised worldwide as a Rotating Savings and Credit Association (ROSCA) — a chit fund is truly an all-in-one financial instrument combining the best features of banks, mutual funds, and cooperative institutions. Every month, members pool their savings and one needy member receives the full amount. The discount offered by that member is shared equally among all — after deducting the company's commission — as a dividend (kazar). Simple, fair, and transparent."
     },
     {
       q: "Is SNS Kuberalakshmi Chits registered?",
